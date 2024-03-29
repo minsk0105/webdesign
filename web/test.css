@@ -44,8 +44,11 @@ i {
 
 .logo {
   width: 300px;
-  font-size: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .nav {
   width: 700px;
@@ -803,7 +806,6 @@ input#acc:checked ~ .accmenu > div {
 .footlg {
   width: 100%;
   line-height: 50px;
-  font-size: 15px;
 }
 
 .footlg > a > h1 {
