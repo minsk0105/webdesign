@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭메뉴</title>
+    <style>
+        .select {
+            width: 100%;
+            height: 600px;
+        }
+
+        .tab {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .tab > div {
+            width: 90px;
+            height: 40px;
+            background-color: inherit;
+            border: 2px solid gray;
+            color: gray;
+            /* font-size: 20px; */
+            text-align: center;
+            line-height: 40px;
+            margin: 0 3px;
+            font-family: Arial, Helvetica, sans-serif;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab > div:nth-of-type(1) {
+            border-color: #ffc107;
+            background-color: #f5f5f5;
+            color: black;
+        }
+
+        .tab > div:hover {
+            background-color: #f5f5f5;
+            border-color: #ffc107;
+            color: black;
+        }
+
+        .box-cont, .kitchen, .room {
+            width: 100%;
+            height: 500px;
+            margin-top: 40px;
+        }
+
+        .kitchen, .room {
+            display: none;
+        }
+
+        .hello {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .move {
+            width: 1200px;
+            height: 400px;
+            /* background-color: lightgreen; */
+            display: flex;
+            overflow: hidden;
+        }
+
+        .move-box {
+            display: flex;
+            width: 2000px;
+            transition: 0.5s;
+            margin-left: -400px;
+            border-top: 1px solid gray;
+            border-bottom: 1px solid gray;
+        }
+
+        .box {
+            width: 400px;
+            height: 400px;
+            /* background-color: lightblue; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box > div {
+            width: 350px;
+            height: 350px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box > div > img {
+            width: 160%;
+        }
+
+        .box > div > img[alt=dark] {
+            width: 180%;
+        }
+
+        .box > div > img[alt=light] {
+            width: 180%;
+        }
+
+        .python {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .between {
+            width: 1200px;
+            /* background-color: gray; */
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btncont {
+            width: 65px;
+            height: 30px;
+            border: none;
+            /* border-radius: 7px; */
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            background-color: rgb(204, 204, 204);
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 13px;
+        }
+
+        .btncont:hover {
+            background-color: rgb(40, 40, 40);
+            color: white;
+            transform: scaleX(1.1);
+        }
+
+        .click {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="select">
+
+        <div class="tab">
+
+            <div class="tab1">주방</div>
+            <div class="tab2">거실</div>
+            <div class="tab3">방</div>
+
+        </div>
+
+        <div class="box-cont">
+
+            <div class="hello">
+
+                <div class="move">
+
+                    <div class="move-box">
+                        <div class="box">
+                            <div>
+                                <img src="https://i0.wp.com/abland.kr/wp-content/uploads/2023/12/wmk-1.jpg?fit=800%2C534&ssl=1" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="https://cdn.imweb.me/thumbnail/20220114/3279f33aa45d4.png" alt="dark">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="https://img.freepik.com/premium-photo/nordic-style-kitchen-interior-modern-house_128711-10489.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/4ldB/image/ymphRwkgPan0OFqOxjGL9QVPlzI" alt="light">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="https://img.maisonkorea.com/2020/05/msk_5ecf0e638828a.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="python">
+
+                <div class="between">
+
+                    <div class="btncont" id="left">BEFORE</div>
+                    <div class="btncont" id="right">NEXT</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="kitchen">
+
+            <div class="hello">
+
+                <div class="move">
+
+                    <div class="move-box">
+                        <div class="box">
+                            <div>
+                                <img src="https://i0.wp.com/abland.kr/wp-content/uploads/2023/12/wmk-1.jpg?fit=800%2C534&ssl=1" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="" alt="tab menu 2">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="https://img.freepik.com/premium-photo/nordic-style-kitchen-interior-modern-house_128711-10489.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/4ldB/image/ymphRwkgPan0OFqOxjGL9QVPlzI" alt="light">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="https://img.maisonkorea.com/2020/05/msk_5ecf0e638828a.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="python">
+
+                <div class="between">
+
+                    <div class="btncont" id="left">BEFORE</div>
+                    <div class="btncont" id="right">NEXT</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="room">
+
+            <div class="hello">
+
+                <div class="move">
+
+                    <div class="move-box">
+                        <div class="box">
+                            <div>
+                                <img src="https://i0.wp.com/abland.kr/wp-content/uploads/2023/12/wmk-1.jpg?fit=800%2C534&ssl=1" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="" alt="tab menu 3">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="https://img.freepik.com/premium-photo/nordic-style-kitchen-interior-modern-house_128711-10489.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/4ldB/image/ymphRwkgPan0OFqOxjGL9QVPlzI" alt="light">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <img src="https://img.maisonkorea.com/2020/05/msk_5ecf0e638828a.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="python">
+
+                <div class="between">
+
+                    <div class="btncont" id="left">BEFORE</div>
+                    <div class="btncont" id="right">NEXT</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const left = document.getElementById('left');
+        const right = document.getElementById('right');
+        const box = document.querySelector('.move-box');
+
+        left.addEventListener('click', function() {
+            if (box.style.marginLeft == '') {
+                box.style.marginLeft = '0px';
+            }
+            else if (box.style.marginLeft == '-400px') {
+                box.style.marginLeft = '0px';
+            }
+            else if (box.style.marginLeft == '-800px') {
+                box.style.marginLeft = '-400px';
+            }
+        })
+
+        right.addEventListener('click', function() {
+            if (box.style.marginLeft == '') {
+                box.style.marginLeft = '-800px';
+            }
+            else if (box.style.marginLeft == '-400px') {
+                box.style.marginLeft = '-800px';
+            }
+            else if (box.style.marginLeft == '0px') {
+                box.style.marginLeft = '-400px';
+            }
+        })
+
+        const first = document.querySelector('.box-cont');
+        const kitchen = document.querySelector('.kitchen');
+        const room = document.querySelector('.kitchen');
+        const kbtn = document.querySelector('.tab1');
+        const mbtn = document.querySelector('.tab2');
+        const rbtn = document.querySelector('.tab3');
+
+        rbtn.addEventListener('mouseover', function(){
+
+            console.log(room);
+        })
+    </script>
+</body>
+</html>
