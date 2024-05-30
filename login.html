@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Interior</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, Helvetica, sans-serif; */
+    }
+
+    li {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    header {
+        /* position: absolute;
+        top: 0;
+        left: 0; */
+        width: 100%;
+        height: 40px;
+        color: black;
+        padding: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* background-color: rgba(0, 0, 0, 0.1); */
+        z-index: 3;
+        background-color: #f5f5f5;
+        position: fixed;
+        font-weight: bold;
+        font-family: arial, sans-serif;
+    }
+
+    .logo {
+        width: 200px;
+        height: 40px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo  img {
+        width: 100%;
+        /* height: 80px; */
+        text-align: center;
+        line-height: 40px;
+        color: white;
+        cursor: pointer;
+    }
+
+    nav > ul {
+        list-style: none;
+        display: flex;
+    }
+
+    nav > ul > li {
+        /* width: 100px; */
+        width: 3vw;
+        margin: 0 20px;
+        height: 40px;
+        /* padding-bottom: 20px; */
+        text-align: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* nav > ul > li:hover .submenu > li {
+        visibility: visible;
+        opacity: 1;
+    } */
+
+    nav > ul > li:hover .submenu {
+        margin-top: 0px;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    nav > ul > li > a {
+        color: black;
+        text-decoration: none;
+        transition: color 0.3s;
+        /* font-weight: bold; */
+        font-family: 견고딕;
+        font-size: 13px;
+        line-height: 40px;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+
+    nav > ul > li > a:hover {
+        color: #ffc107;
+    }
+
+    .submenu {
+        position: absolute;
+        top: 40px;
+        /* padding-top: 40px; */
+        /* left: 0; */
+        /* background-color: #f5f5f5; */
+        text-align: center;
+        color: rgb(53, 53, 53);
+        margin-top: -10px;
+        transition: 0.2s;
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .submenu > li {
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .submenu > li:hover {
+        border-bottom: 1px solid gray;
+        margin-left: 5px;
+        background-color: white;
+        color: #ffc107;
+        /* text-shadow: 0 0 1px rgba(0, 0, 0, 0.3); */
+    }
+
+    .user-actions {
+        width: 160px;
+    }
+
+    .user-actions button {
+        background-color: inherit;
+        color: black;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        transition: 0.5s;
+        padding: 3px 10px;
+    }
+
+    .user-actions button:hover {
+        background-color: #ddd;
+        color: #333;
+    }
+
+    .sidebar {
+        background-color: #e7e7e7;
+        color: black;
+        width: 0px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        padding-top: 20px;
+        /* transform: scaleX(0);
+        transform-origin: left; */
+        transition: 0.5s;
+        overflow: hidden;
+        z-index: 4;
+    }
+
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+    }
+
+    .sidebar-menu li {
+        margin-bottom: 10px;
+    }
+
+    .sidebar-menu li a {
+        width: 200px;
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding: 10px;
+        transition: background-color 0.3s;
+    }
+
+    .sidebar-menu li a:hover {
+        background-color: #555;
+        color: white;
+    }
+
+    #close-button {
+        margin-left: 10px;
+        padding: 3px 10px;
+        color: black;
+        font-size: 25px;
+        border: none;
+        background-color: inherit;
+        cursor: pointer;
+    }
+
+    .active {
+        /* transform: scaleX(1); */
+        width: 200px;
+    }
+
+    .log {
+        padding-top: 40px;
+        width: 100%;
+        height: 1000px;
+        /* background-color: gray; */
+        display: flex;
+    }
+
+    .logcont {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .logbox {
+        margin-top: 200px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .logbox button {
+        display: block;
+    }
+
+    .logcont img {
+        width: 170%;
+    }
+
+    .sns {
+        margin-top: 10px;
+        width: 300px;
+        height: 60px;
+        cursor: pointer;
+        border: none;
+        border-radius: 15px;
+        text-align: center;
+        line-height: 60px;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: arial, sans-serif;
+    }
+
+    .logbox > div {
+        width: 300px;
+    }
+
+    .logbox > div hr {
+        margin-top: 40px;
+        border-color: rgb(255, 255, 255);
+    }
+
+    .logbox > div p {
+        font-weight: bold;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        font-size: 17px;
+    }
+
+    .item {
+        width: 300px;
+        height: 60px;
+        border: 1px solid rgb(187, 187, 187);
+        border-radius: 15px;
+        margin-top: 10px;
+    }
+    .item input {
+        border: none;
+        width: 90%;
+        height: 20px;
+        margin-left: 10px;
+        font-size: 15px;
+        /* font-weight: bold; */
+    }
+
+    .item input::placeholder {
+        font-weight: bold;
+        color: #c9c9c9;
+    }
+
+    .item input:focus {
+        outline: none;
+    }
+
+    label[for=holder] {
+        display: block;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 5px 10px;
+        color: rgb(109, 109, 109);
+    }
+
+    #kakao {
+        background-color: #f9e000;
+    }
+    #naver {
+        background-color: #4fa42b;
+        color: white;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    }
+    #apple {
+        background-color: black;
+        color: white;
+    }
+    #submit {
+        margin-top: 20px;
+        background-color: black;
+        color: white;
+    }
+
+    .per {
+        border: 1px solid rgb(211, 211, 211);
+        color: rgb(59, 59, 59);
+        background-color: inherit;
+        border-radius: 6px;
+        padding: 4px 6px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .per:hover {
+        border: 1px solid rgb(53, 53, 53);
+    }
+
+    .per:nth-of-type(3) {
+        margin-left: 56px;
+    }
+
+    .football {
+        margin-top: 10px;
+    }
+
+    footer {
+    width: 100%;
+    height: 250px;
+    background-color: rgb(12, 12, 12);
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.footcont {
+    width: 1320px;
+}
+
+footer h2 {
+    font-weight: 100;
+    padding: 10px 20px;
+}
+
+.tt1 {
+    display: inline-block;
+    display: flex;
+    padding: 10px 20px;
+}
+
+.tt1 span {
+    width: 300px;
+    font-size: 15px;
+    color: #f0f0f0;
+    font-family: arial, sans-serif;
+}
+
+.tt1 span:nth-of-type(2) {
+    margin-left: 30px;
+}
+
+.tt1 span > p {
+    margin-top: 7px;
+    font-weight: 100;
+    /* color: rgb(165, 165, 165); */
+    font-size: 13px;
+}
+
+.line {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.line span {
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+}
+
+.info {
+    width: 100%;
+    font-size: 12px;
+    color: rgb(165, 165, 165);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+div {
+    width: 100%;
+}
+
+.info span {
+    position: relative;
+    /* margin-right: 10px; */
+    padding: 0 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.info span::after {
+    position: absolute;
+    content: "";
+    top: 2px;right: 0;
+    width: 1px;
+    height: 8px;
+    background-color: rgb(165, 165, 165);
+}
+
+.info span:nth-of-type(6)::after {
+    width: 0;
+}
+
+.kkk {
+    display: flex;
+    justify-content: right;
+}
+
+.icon {
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+    width: 100px;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon img {
+    margin: 0 10px;
+    cursor: pointer;
+}
+    
+    </style>
+</head>
+<body>
+    <header>
+
+        <div class="logo">
+            <a href="index.html">
+                <img src="logo.png" alt="logo">
+            </a>
+        </div>
+    
+        <nav>
+            <ul>
+                <li>
+                    <a href="service.html">서비스</a>
+                </li>
+                <li>
+                    <a href="#">제품</a>
+                    <ul class="submenu">
+                        <li><a href="#">소파</a></li>
+                        <li><a href="#">테이블</a></li>
+                        <li><a href="#">의자</a></li>
+                        <li><a href="#">침대</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">소개</a>
+                    <ul class="submenu">
+                        <li><a href="#">CEO</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Location</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">채용</a>
+                    <ul class="submenu">
+                        <li><a href="#">채용 공고</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Keyword</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    
+        <div class="user-actions">
+            <button id="sidebar-toggle" style="font-size: 20px;">〓</button>
+        </div>
+
+    </header>
+
+    <aside class="sidebar">
+
+        <ul class="sidebar-menu">
+
+            <li><a href="#">내 정보</a></li>
+            <li><a href="#">장바구니</a></li>
+            <li><a href="#">관심 목록</a></li>
+            <li><a href="login.html">로그인</a></li>
+            <li><a href="login.html">회원가입</a></li>
+
+        </ul>
+
+        <div>
+            <button id="close-button" style="border-top: 1px solid black;border-bottom: 1px solid black;">→</button>
+        </div>
+
+    </aside>
+
+    <div class="log">
+
+        <div class="logcont" id="signin">
+
+            <div class="logbox">
+
+                <div>
+
+                    <a href="#">
+                        <button class="sns" id="kakao">카카오로 로그인하기</button>
+                    </a>
+
+                    <a href="#">
+                        <button class="sns" id="naver">네이버로 로그인하기</button>
+                    </a>
+
+                    <a href="#">
+                        <button class="sns" id="apple">APPLE로 로그인하기</button>
+                    </a>
+
+                    <hr>
+
+                    <p>아이디/비밀번호 로그인 하기</p>
+
+                    <div class="item">
+
+                        <label for="holder">아이디</label>
+                        <input type="text" placeholder="아이디를 입력하세요">
+
+                    </div>
+
+                    <div class="item">
+
+                        <label for="holder">비밀번호</label>
+                        <input type="password" placeholder="비밀번호를 입력하세요">
+
+                    </div>
+
+                    <button class="sns" id="submit">
+                        로그인
+                    </button>
+
+                    <div class="football">
+
+                        <a href="#" class="per">아이디 찾기</a>
+                        <a href="#" class="per">비밀번호 찾기</a>
+                        <a href="#" class="per">회원가입</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="logcont" id="imgcont">
+            <img src="https://image.ytn.co.kr/general/jpg/2018/0806/201808060928400458_img_0.jpg" alt="">
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footcont">
+            <h2>Interior Teacher</h2>
+            <div class="tt1">
+                <span>고객센터
+                    <p>02-1234-9786</p>
+                    <p style="color: rgb(165, 165, 165);">평일 : 오전 6시 ~ 오후 9시<br>
+                        주말 및 공휴일 휴무
+                    </p>
+                </span>
+                <span>이용안내
+                    <p>자주 묻는 질문</p>
+                    <p>취소&환불약관</p>
+                    <p>이용약관</p>
+                    <p>개인정보처리방침</p>
+                </span>
+                <div class="kkk">
+                    <div class="icon">
+                        <img src="http://www.monami.com/images/common/sns_facebook.gif" alt="">
+                        <img src="http://www.monami.com/images/common/sns_insta.gif" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="line">
+                <span></span>
+            </div>
+            <div class="info">
+                <div>
+                    <span>주식회사 인테리어티쳐</span>
+                    <span>대표 : 박현영</span>
+                    <span>주소 : 인천광역시 부평구 구산동 무네미로448번길</span>
+                    <span>사업자등록번호 : 123-45-67890</span>
+                    <span>통신판매업신고번호 : 2024-부평구산-1010</span>
+                    <span>이메일 : asdf@information.com</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+
+        btn.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+        })
+
+        const remo = document.querySelector('#close-button');
+
+        remo.addEventListener('click', function() {
+            sidebar.classList.remove('active');
+        })
+    </script>
+</body>
+</html>
