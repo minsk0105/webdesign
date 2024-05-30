@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>드래그앤드롭</title>
+	<style>
+		#dropbox {
+			width: 500px;
+			height: 300px;
+			display: flex; /* Flexbox 사용 */
+    	justify-content: center; /* 가로 방향 가운데 정렬 */
+    	align-items: center; /* 세로 방향 가운데 정렬 */
+			border: 5px dotted indigo;
+			font-size: 20px;
+		}
+		.photo {
+			display: inline-block;
+			margin: 5px;
+			position: relative;
+			border: 1px solid #888;
+			border-radius: 5px;
+		}
+		.photo img { max-width: 300px; max-height: 300px;}
+		.photo span {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			padding: 5px;
+			background-color: rgba(0,0,0,0.5);
+			cursor: pointer;
+			color: white;
+			font-weight: 800;
+		}
+		#modal {
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.9);
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			display: none; /* 처음에는 none 보일 때 flex 전환 */
+    	justify-content: center; /* 가로 방향 가운데 정렬 */
+    	align-items: center; /* 세로 방향 가운데 정렬 */
+		}
+		#modal span.close-modal {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 50px;
+			height: 50px;
+			display: flex; /* Flexbox 사용 */
+    	justify-content: center; /* 가로 방향 가운데 정렬 */
+    	align-items: center; /* 세로 방향 가운데 정렬 */
+			background-color: white;
+			border-radius: 50%;
+			font-size: 30px;
+			font-weight: 800;
+			color: black;
+			cursor: pointer;
+		}
+		#viewer img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+		#modal #prevBtn,
+		#modal #nextBtn {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			font-size: 30px;
+			font-weight: bold;
+			color: white;
+			cursor: pointer;
+		}
+
+		#modal #prevBtn {
+			left: 20px;
+		}
+
+		#modal #nextBtn {
+			right: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="dropbox" ondrop="dropHandler(event)" ondragover="overHandler(event)" ondragleave="leaveHandler(event)">Drop Images Here.</div>
+	<div><button onclick="removeAllPhotos()">이미지 모두 삭제</button></div>
+	<div id="photobox"></div>
+	<div id="modal">
+		<span id="prevBtn" onclick="showPrevPhoto()">◀</span>
+		<div id="viewer"></div>
+		<span id="nextBtn" onclick="showNextPhoto()">▶</span>
+		<span class="close-modal" onclick="closeModal()">X</span>
+	</div>
+	<script>
+		const dropbox = document.querySelector("#dropbox")
+		const photobox = document.querySelector("#photobox")
+		const modal = document.querySelector("#modal")
+		const viewer = document.querySelector("#viewer")
+
+		const overHandler = (event) => {
+			event.preventDefault()
+			dropbox.style.backgroundColor = "yellow"
+		}
+
+		const leaveHandler = (event) => {
+			event.preventDefault()
+			dropbox.style.backgroundColor = "white"
+		}
+
+		const dropHandler = (event) => {
+			event.preventDefault()
+			dropbox.style.backgroundColor = "white"
+			const photos = event.dataTransfer.items
+			showPhotos(photos)
+		}
+
+		const showPhotos = (photos) => {
+			if( ! photos ) return
+			for(let i=0; i<photos.length; i++) {
+				let p = photos[i]
+				if( p.kind === 'file' && p.type.match('^image/')) {
+					let reader = new FileReader()
+					let file = p.getAsFile()
+					reader.readAsDataURL(file)
+					reader.onload = (event) => {
+						const src = event.target.result
+						const img = `
+							<div class='photo'>
+								<span onclick='removePhoto(this)'>X</span>
+								<img src='${src}' onclick='showModal(this.src)'>
+							</div>
+						`
+						photobox.innerHTML += img
+						//사진들을 로컬스토리지에 저장하고 페이지 다시 열어보이게 함
+						//단, 로컬스토리지 저장 용량에 한계가 있음 주의(영문 기준 5백2십만 글자)
+						//for문 바깥에 두면 반복문이 다 돌기도 전에 실행해버리므로 매 사진 추가할 때마다 로컬스토리지에 다시 쓰는 방식을 사용
+						localStorage.setItem('photolist', photobox.innerHTML)
+					}
+				}
+			}
+
+		}
+
+		const removePhoto = (e) => {
+			e.parentElement.remove()
+			//삭제한 내용 반영해서 로컬스토리지에 저장
+			localStorage.setItem("photolist", photobox.innerHTML)
+		}
+
+		const removeAllPhotos = () => {
+			photobox.innerHTML = ''
+			//삭제한 내용 반영해서 로컬스토리지에 저장
+			localStorage.setItem("photolist", photobox.innerHTML)
+		}
+
+		const showModal = (src) => {
+			// const photo = `<img src='${src}'>`
+			// viewer.innerHTML = photo
+			// modal.style.display = 'flex'
+			const photos = document.querySelectorAll('.photo img');
+			for (let i = 0; i < photos.length; i++) {
+				if (photos[i].src === src) {
+					currentIndex = i;
+					break;
+				}
+			}
+			const photo = `<img src='${src}'>`
+			viewer.innerHTML = photo;
+			modal.style.display = 'flex'
+		}
+
+		const closeModal = () => {
+			viewer.innerHTML = ''
+			modal.style.display = 'none'
+		}
+
+		let currentIndex = 0;
+		const showPrevPhoto = () => {
+			const photos = document.querySelectorAll('.photo img')
+			if (currentIndex > 0) {
+					currentIndex--
+					const src = photos[currentIndex].src
+					const photo = `<img src='${src}'>`
+					viewer.innerHTML = photo;
+			}
+		};
+
+		const showNextPhoto = () => {
+			const photos = document.querySelectorAll('.photo img')
+			if (currentIndex < photos.length - 1) {
+					currentIndex++
+					const src = photos[currentIndex].src
+					const photo = `<img src='${src}'>`
+					viewer.innerHTML = photo;
+			}
+		}
+
+		window.onload = () => {
+			photobox.innerHTML = localStorage.getItem('photolist')
+		}
+	</script>
+</body>
+</html>
