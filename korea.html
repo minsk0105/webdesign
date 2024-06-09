@@ -93,6 +93,7 @@
         const cityname = document.querySelector('#city-name');
         const cityinfo = document.querySelector('#city-info');
         const modal = document.querySelector('.modal');
+        const close = document.querySelector('.clsbtn');
 
         let cityData = {}
         fetch("korea.json")
@@ -129,6 +130,10 @@
                 // console.log(modal)
                 modal.style.display = 'block';
             })
+        })
+
+        close.addEventListener('click', function(){
+            modal.style.display = 'none';
         })
     </script>
 </body>
