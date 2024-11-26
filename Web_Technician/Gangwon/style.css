@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
+}
+
+li {
+    list-style: none;
+    padding-left: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.wrap {
+    width: 1200px;
+    overflow: hidden;
+}
+
+header,
+footer {
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+.logo {
+    width: 20%;
+    height: 100%;
+    background-color: #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    background-color: lightgray;
+}
+
+.menu {
+    display: flex;
+    margin-right: 30px;
+    background-color: rgb(181, 181, 181);
+}
+
+.menu > li {
+    position: relative;
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.menu > li > a {
+    display: block;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.submenu {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    /* transition: 0.3s ease-out; */
+    background-color: rgb(181, 181, 181);
+    /* height: 0; */
+}
+
+.submenu > li {
+    width: 100%;
+    cursor: pointer;
+}
+
+.menu > li > a:hover,
+.submenu > li:hover {
+    background-color: rgb(201, 201, 201);
+}
+
+/* .menu:hover .submenu {
+    height: 150px;
+} */
+
+article {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-color: #d7d7d7;
+    overflow: hidden;
+    z-index: -1;
+}
+
+article > img {
+    position: absolute;
+    display: none;
+}
+
+section {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    overflow: hidden;
+}
+
+.gallery,
+.banner,
+.now {
+    width: 33.3333%;
+    height: 100%;
+}
+
+.gallery {
+    background-color: #f5f5f5;
+}
+
+.banner {
+    background-color: #e3e3e3;
+}
+
+.now {
+    background-color: #a9a9a9;
+}
+
+footer > div:nth-last-of-type(1) {
+    width: 80%;
+    height: 100%;
+}
+
+.under {
+    width: 100%;
+    height: 50%;
+    background-color: #c7c7c7;
+}
+
+.copy {
+    width: 100%;
+    height: 50%;
+    background-color: #c2c2c2;
+}
