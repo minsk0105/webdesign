@@ -95,6 +95,26 @@ header {
     text-transform: uppercase;
 }
 
+.menu > li > ul {
+    position: absolute;
+    margin-left: 30px;
+    padding-top: 10px;
+    overflow: hidden;
+    transition: 0.2s ease;
+    transform-origin: top center;
+    transform: scale(0);
+}
+
+.menu > li > ul a {
+    font-size: 16px;
+    font-weight: 500;
+    color: #E3DAC5;
+}
+
+.menu > li:hover ul {
+    transform: scale(1);
+}
+
 /* 메인 비디오 섹션 */
 .visual {
     position: relative;
