@@ -5,11 +5,27 @@
     box-sizing: border-box;
     cursor: default;
     color: rgb(40, 40, 40);
+    font-family: 'aktiv-grotesk-extended';
 }
+
+/* @font-face {
+    font-family: 'aktiv-grotesk';
+    src: url(https://use.typekit.net/af/63eba7/00000000000000007753ca4f/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3);
+} */
+
+@font-face {
+    font-family: 'aktiv-grotesk-extended';
+    src: url(https://use.typekit.net/af/ca393a/00000000000000007753ca57/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3);
+};
 
 li {
     list-style: none;
+    list-style-type: none;
     padding-left: 0;
+}
+
+li::marker {
+    content: none;
 }
 
 a {
