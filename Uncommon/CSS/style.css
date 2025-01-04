@@ -87,12 +87,15 @@ header {
 }
 
 .menu > li > a {
+    position: relative;
     color: #E3DAC5;
     cursor: pointer;
     margin-left: 30px;
     font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
+    overflow: hidden;
+    display: inline-block;
 }
 
 .menu > li > ul {
@@ -376,7 +379,7 @@ footer {
 
 .yes {
     position: relative;
-    width: 23vw;
+    width: 20vw;
 }
 
 .footer_menu > li > a {
@@ -391,11 +394,11 @@ footer {
 }
 
 .footer_submenu a {
-    display: block;
+    display: inline-block;
     color: #e3dac5a0;
     font-size: 18px;
     font-weight: 500;
-    margin: 10px 0;
+    margin: 5px 0;
     cursor: pointer;
 }
 
@@ -403,6 +406,7 @@ footer {
     color: #e3dac5a0;
     font-size: 18px;
     font-weight: 500;
+    margin-bottom: 30px;
 }
 
 /* 푸터 사이트 정보 */

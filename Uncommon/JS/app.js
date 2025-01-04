@@ -74,3 +74,44 @@ window.addEventListener('scroll', function(event) {
     scrSection(event);
     srcList(event);
 });
+
+// 링크 호버 시 랜덤 알파벳 효과
+const link = document.querySelectorAll('.link');
+
+let result = "";
+
+link.forEach(function(item) {
+    item.addEventListener('mouseover', function(event) {
+        const target = event.target;
+        const list = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const value = target.innerHTML;
+        
+        for (let i = 0; i < value.length; i++) {
+            result += list.charAt(Math.floor(Math.random() * list.length));
+            target.innerHTML = result;
+        }
+    
+        const replaced = target.innerHTML;
+        const basicName = target.getAttribute("data-name");
+        let hello = "";
+    
+        for (let i = 0; i < replaced.length; i++) {
+            // const delay = (i + 1) + '00';
+            const delay = ((replaced.length + '00') / 3) / (replaced.length - i);
+            setTimeout(function() {
+                const pre = replaced.slice(i + 1);
+                const next = basicName.slice(0, [i + 1]);
+                hello = (next + pre);
+                target.innerHTML = hello;
+            }, delay);
+        }
+    });
+});
+
+link.forEach(function(item) {
+    item.addEventListener('mouseout', function(event) {
+        const target = event.target;
+        result = "";
+        // target.innerHTML = target.getAttribute("data-name");
+    });
+});
