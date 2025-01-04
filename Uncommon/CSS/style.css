@@ -37,6 +37,13 @@ header {
     align-items: end;
     padding: 0 20px;
     z-index: 2;
+    transition: 0.3s ease-in-out;
+}
+
+.hide_header {
+    visibility: hidden;
+    opacity: 0;
+    height: 60px;
 }
 
 .head_left {
@@ -90,9 +97,10 @@ header {
 
 /* 메인 비디오 섹션 */
 .visual {
-    overflow: hidden;
+    position: relative;
+    /* overflow: hidden; */
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,7 +108,110 @@ header {
 
 .visual > video {
     width: 100%;
-    min-height: 100%;
+}
+
+/* 비주얼 텍스트 */
+.visual_comment {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.visual_comment p {
+    color: #E3DAC5;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* 섹션 애니메이션 박스 */
+.animation_box {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 350px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #e3dac59e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.5s ease-out;
+    z-index: 2;
+}
+
+.scrolled {
+    top: 540px;
+    left: 20px;
+    border: none;
+}
+
+.play_line {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(30, 30, 30);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.play_line > div {
+    width: 800px;
+    display: flex;
+    align-items: center;
+    animation: play infinite linear 6s;
+}
+
+.play_line > div:hover {
+    animation-play-state: paused;
+}
+
+@keyframes play {
+    from {
+        transform: translateX(0);
+    }
+    
+    to {
+        transform: translateX(-40%);
+    }
+}
+
+.play_line > div > p {
+    width: 150px;
+    color: #6084b7;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.animation_video {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #344855;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animation_box svg {
+    position: absolute;
+    z-index: 1;
+    width: 60%;
+}
+
+.showreel {
+    position: absolute;
+    opacity: 0;
 }
 
 /* 더보기 고정 박스 */
@@ -117,6 +228,14 @@ header {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    z-index: 2;
+    transition: 0.3s ease;
+}
+
+.hide_fixMore {
+    visibility: hidden;
+    margin-top: -20px;
+    opacity: 0;
 }
 
 .fix_more:hover .fix_comment {
@@ -133,7 +252,7 @@ header {
 .fix_comment {
     overflow: hidden;
     width: 0px;
-    transition: 0.3s ease-in-out;
+    transition: 0.4s ease-in-out;
     cursor: pointer;
 }
 
@@ -158,7 +277,183 @@ header {
 
 /* 페이지 메인 섹션 */
 .page_main {
+    position: relative;
+    overflow: hidden;
     width: 100%;
-    height: 500px;
+    height: 1000px;
     background-color: rgb(13, 13, 13);
+}
+
+.mount_img {
+    position: absolute;
+    top: 200px;
+    right: 20px;
+    width: 200px;
+    height: 300px;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-out;
+    transform: translateX(110%);
+}
+
+.mount_img video {
+    width: 270%;
+}
+
+.one_mp {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    width: 330px;
+    height: 190px;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-out;
+    transform: translateX(-110%);
+}
+
+.one_mp video {
+    width: 120%;
+}
+
+.two_mp {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    width: 270px;
+    height: 270px;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-out;
+    transform: translateX(110%);
+}
+
+.two_mp video {
+    width: 190%;
+}
+
+/* 푸터 섹션 */
+footer {
+    width: 100%;
+    background-color: rgb(13, 13, 13);
+    padding: 0 20px;
+}
+
+/* 푸터 메뉴 */
+.footer_menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.yes {
+    position: relative;
+    width: 23vw;
+}
+
+.footer_menu > li > a {
+    color: #E3DAC5;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.footer_submenu {
+    margin-top: 30px;
+}
+
+.footer_submenu a {
+    display: block;
+    color: #e3dac5a0;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.footer_submenu p {
+    color: #e3dac5a0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* 푸터 사이트 정보 */
+.page_site {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    margin-top: 50px;
+    padding: 20px 0;
+}
+
+/* 푸터 로고 */
+.f_logo {
+    display: flex;
+    height: 14px;
+}
+
+.f_logo a {
+    display: flex;
+}
+
+.f_logo svg {
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.f_logo path {
+    color: #6084b7;
+    cursor: pointer;
+}
+
+.site_info {
+    margin-top: 25px;
+    display: flex;
+}
+
+.site_left {
+    margin-right: 50px;
+}
+
+.site_left p {
+    color: #6084b7;
+    margin-bottom: 25px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.site_info a,
+.others a {
+    display: block;
+    color: #6084b7;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+/* 기타 옵션 */
+.others {
+    position: absolute;
+    bottom: 37px;
+    right: 0;
+}
+
+.others_menu {
+    display: flex;
+    align-items: end;
+}
+
+.others_menu > li {
+    margin-left: 30px;
 }
