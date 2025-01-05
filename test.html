@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Follow Inside Box</title>
+    <style>
+        /* 외부 박스 스타일 */
+        .outer-box {
+            width: 400px;
+            height: 400px;
+            border: 2px solid black;
+            position: relative;
+            overflow: hidden; /* 내부 요소가 밖으로 나가지 않도록 설정 */
+        }
+
+        /* 내부 요소 스타일 */
+        .inner-box {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            pointer-events: none; /* 요소가 마우스를 가리지 않도록 설정 */
+            transition: transform 0.3s ease; /* 부드럽게 움직이도록 설정 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 외부 박스 -->
+    <div class="outer-box" id="outerBox">
+        <!-- 내부 요소 -->
+        <div class="inner-box" id="innerBox"></div>
+    </div>
+
+    <script>
+        // 외부 박스와 내부 박스 요소 가져오기
+        const outerBox = document.getElementById('outerBox');
+        const innerBox = document.getElementById('innerBox');
+
+        // 초기 위치: 외부 박스의 중앙
+        const resetPosition = () => {
+            const boxRect = outerBox.getBoundingClientRect();
+            const centerX = boxRect.width / 2 - innerBox.offsetWidth / 2;
+            const centerY = boxRect.height / 2 - innerBox.offsetHeight / 2;
+            innerBox.style.transform = `translate(${centerX}px, ${centerY}px)`;
+        };
+
+        // 외부 박스에 마우스가 들어갔을 때 마우스 위치에 맞춰 내부 박스 이동
+        outerBox.addEventListener('mousemove', (e) => {
+            const boxRect = outerBox.getBoundingClientRect();
+
+            // 마우스 위치 계산 (박스 내의 상대적인 좌표)
+            const mouseX = e.clientX - boxRect.left;
+            const mouseY = e.clientY - boxRect.top;
+
+            // 내부 박스를 마우스 커서 위치로 부드럽게 이동
+            innerBox.style.transform = `translate(${mouseX - innerBox.offsetWidth / 2}px, ${mouseY - innerBox.offsetHeight / 2}px)`;
+        });
+
+        // 마우스가 외부 박스를 벗어날 때 내부 박스를 중앙으로 되돌림
+        outerBox.addEventListener('mouseleave', () => {
+            resetPosition();
+        });
+
+        // 페이지 로드 시 내부 박스를 초기 중앙 위치로 설정
+        window.addEventListener('load', resetPosition);
+    </script>
+
+</body>
+</html>

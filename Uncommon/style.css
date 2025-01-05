@@ -1,0 +1,499 @@
+/* common stylesheet */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
+    color: rgb(40, 40, 40);
+    font-family: 'aktiv-grotesk-extended';
+}
+
+/* @font-face {
+    font-family: 'aktiv-grotesk';
+    src: url(https://use.typekit.net/af/63eba7/00000000000000007753ca4f/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3);
+} */
+
+@font-face {
+    font-family: 'aktiv-grotesk-extended';
+    src: url(https://use.typekit.net/af/ca393a/00000000000000007753ca57/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3);
+};
+
+li {
+    list-style: none;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li::marker {
+    content: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+/* 헤더 섹션 */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 0 20px;
+    z-index: 2;
+    transition: 0.3s ease-in-out;
+}
+
+.hide_header {
+    visibility: hidden;
+    opacity: 0;
+    height: 60px;
+}
+
+.head_left {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.header_square {
+    width: 40px;
+    height: 20px;
+    background-color: #E3DAC5;
+}
+
+/* 로고 */
+.logo {
+    display: flex;
+    height: 14px;
+}
+
+.logo a {
+    display: flex;
+}
+
+.logo svg {
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.logo path {
+    color: #E3DAC5;
+    cursor: pointer;
+}
+
+/* 네비게이션 */
+.menu {
+    display: flex;
+}
+
+.menu > li > a {
+    position: relative;
+    color: #E3DAC5;
+    cursor: pointer;
+    margin-left: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.menu > li > ul {
+    position: absolute;
+    margin-left: 30px;
+    padding-top: 10px;
+    overflow: hidden;
+    transition: 0.2s ease;
+    transform-origin: top center;
+    transform: scale(0);
+}
+
+.menu > li > ul a {
+    font-size: 16px;
+    font-weight: 500;
+    color: #E3DAC5;
+}
+
+.menu > li:hover ul {
+    transform: scale(1);
+}
+
+/* 메인 비디오 섹션 */
+.visual {
+    position: relative;
+    /* overflow: hidden; */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visual > video {
+    width: 100%;
+}
+
+/* 비주얼 텍스트 */
+.visual_comment {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.visual_comment p {
+    color: #E3DAC5;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* 섹션 애니메이션 박스 */
+.animation_box {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 350px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #e3dac59e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 0.5s ease-out;
+    z-index: 2;
+}
+
+.scrolled {
+    top: 540px;
+    left: 20px;
+    border: none;
+}
+
+.play_line {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(30, 30, 30);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.play_line > div {
+    width: 800px;
+    display: flex;
+    align-items: center;
+    animation: play infinite linear 6s;
+}
+
+.play_line > div:hover {
+    animation-play-state: paused;
+}
+
+@keyframes play {
+    from {
+        transform: translateX(0);
+    }
+    
+    to {
+        transform: translateX(-40%);
+    }
+}
+
+.play_line > div > p {
+    width: 150px;
+    color: #6084b7;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.animation_video {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #344855;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animation_box svg {
+    position: absolute;
+    z-index: 1;
+    width: 60%;
+}
+
+.showreel {
+    position: absolute;
+    opacity: 0;
+}
+
+/* 더보기 고정 박스 */
+.fix_more {
+    position: fixed;
+    top: 120px;
+    left: 20px;
+    /* width: 110px; */
+    height: 60px;
+    overflow: hidden;
+    border: 1px solid #e3dac59e;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: 0.3s ease;
+}
+
+.hide_fixMore {
+    visibility: hidden;
+    margin-top: -20px;
+    opacity: 0;
+}
+
+.fix_more:hover .fix_comment {
+    margin-left: 10px;
+    width: 300px;
+}
+
+.fix_more img {
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+}
+
+.fix_comment {
+    overflow: hidden;
+    width: 0px;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.fix_comment span {
+    display: block;
+    width: 305px;
+    color: #E3DAC5;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.more_btn {
+    font-size: 30px;
+    font-weight: 200;
+    color: #e3dac59e;
+    padding: 0 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+/* 페이지 메인 섹션 */
+.page_main {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 1000px;
+    background-color: rgb(13, 13, 13);
+}
+
+.mount_img {
+    position: absolute;
+    top: 200px;
+    right: 20px;
+    width: 200px;
+    height: 300px;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-out;
+    transform: translateX(110%);
+}
+
+.mount_img video {
+    width: 270%;
+}
+
+.one_mp {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    width: 330px;
+    height: 190px;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-out;
+    transform: translateX(-110%);
+}
+
+.one_mp video {
+    width: 120%;
+}
+
+.two_mp {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    width: 270px;
+    height: 270px;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-out;
+    transform: translateX(110%);
+}
+
+.two_mp video {
+    width: 190%;
+}
+
+/* 푸터 섹션 */
+footer {
+    width: 100%;
+    background-color: rgb(13, 13, 13);
+    padding: 0 20px;
+}
+
+/* 푸터 메뉴 */
+.footer_menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.yes {
+    position: relative;
+    width: 20vw;
+}
+
+.footer_menu > li > a {
+    color: #E3DAC5;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.footer_submenu {
+    margin-top: 30px;
+}
+
+.footer_submenu a {
+    display: inline-block;
+    color: #e3dac5a0;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.footer_submenu p {
+    color: #e3dac5a0;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+/* 푸터 사이트 정보 */
+.page_site {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    margin-top: 50px;
+    padding: 20px 0;
+}
+
+/* 푸터 로고 */
+.f_logo {
+    display: flex;
+    height: 14px;
+}
+
+.f_logo a {
+    display: flex;
+}
+
+.f_logo svg {
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.f_logo path {
+    color: #6084b7;
+    cursor: pointer;
+}
+
+.site_info {
+    margin-top: 25px;
+    display: flex;
+}
+
+.site_left {
+    margin-right: 50px;
+}
+
+.site_left p {
+    color: #6084b7;
+    margin-bottom: 25px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.site_info a,
+.others a {
+    display: block;
+    color: #6084b7;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+/* 기타 옵션 */
+.others {
+    position: absolute;
+    bottom: 37px;
+    right: 0;
+}
+
+.others_menu {
+    display: flex;
+    align-items: end;
+}
+
+.others_menu > li {
+    margin-left: 30px;
+}
