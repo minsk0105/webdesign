@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>구세군</title>
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" href="https://www.thesalvationarmy.or.kr/favicon.ico" type="image/x-icon" sizes="any">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    
+
     <!-- 헤더 섹션 -->
     <header>
         <div class="logo">
-            <h2>구세군</h2>
+            <a href="index.html" style="display: flex;">
+                <h1>구세군</h1>
+            </a>
         </div>
 
         <nav>
-            <ul class="main_menu">
-                <li class="intro">
-                    <a href="#">구세군 소개</a>
-                </li>
-                <div class="sub_menu one">
+            <ul class="menu">
+                <li class="intro"><a href="#">구세군 소개</a></li>
+                <div class="submenu one">
                     <h1>구세군 소개</h1>
                     <ul>
                         <li><a href="#">구세군의 역사</a></li>
@@ -28,10 +30,8 @@
                     </ul>
                 </div>
                 
-                <li class="give">
-                    <a href="#">후원하기</a>
-                </li>
-                <div class="sub_menu two">
+                <li class="give"><a href="#">후원하기</a></li>
+                <div class="submenu two">
                     <h1>후원하기</h1>
                     <ul>
                         <li><a href="#">정기 후원</a></li>
@@ -39,10 +39,8 @@
                     </ul>
                 </div>
                 
-                <li class="story">
-                    <a href="#">구세군 스토리</a>
-                </li>
-                <div class="sub_menu three">
+                <li class="story"><a href="#">구세군 스토리</a></li>
+                <div class="submenu three">
                     <h1>구세군 스토리</h1>
                     <ul>
                         <li><a href="#">사진 갤러리</a></li>
@@ -59,15 +57,220 @@
         </div>
     </header>
 
+    <!-- 비주얼 섹션 -->
     <section class="visual">
-        <img src="Img/visual/구세군 (해외)캄보디아지원 .JPG" alt="">
+        <div class="slide">
+
+            <div><img src="Img/visual/구세군 (해외)캄보디아지원 .JPG" alt="캄보디아지원"></div>
+            <div><img src="Img/visual/구세군_절제캠페인사진.JPG" alt="절제캠페인"></div>
+            <div><img src="Img/visual/구세군_코로나19긴급구호사진.jpg" alt="구세군_코로나19긴급구호사진"></div>
+            <div><img src="Img/visual/구세군 (해외)캄보디아지원 .JPG" alt="캄보디아지원"></div>
+
+        </div>
     </section>
 
-    <!-- 메인 섹션 -->
-    <main></main>
+    <div class="visual_text">
+        <div class="foreign">
+            <h3>캄보디아 지원 캠페인</h3>
+            <h1>구세군은 아이들의 건강을 지킵니다.</h1>
+        </div>
+        <div class="smoke">
+            <h3>금연 캠페인</h3>
+            <h1>한마음 뜻을 모아</h1>
+        </div>
+        <div class="covid">
+            <h3>코로나 19 긴급 구호</h3>
+            <h1>어려움을 함께 극복합니다.</h1>
+        </div>
+    </div>
 
+    <!-- 메인 섹션 -->
+    <main class="first">
+        <!-- 공지사항 섹션 -->
+        <section class="notice">
+
+            <!-- 섹션 타이틀 -->
+            <h1 class="title">notice</h1>
+            <p class="comment">구세군의 새로운 소식을 확인해 보세요!</p>
+
+            <div class="notice_contents">
+
+                <input type="radio" name="modal" id="show" hidden>
+
+                <div class="list_box">
+                    <div class="img_box">
+                        <img src="https://m.kbanknow.com/resource/img/bim/Kbank_kakao_og.png" alt="kbank">
+                    </div>
+                    <div class="list_text">
+                        <p class="list_title">구세군, 케이뱅크 취약계층 육아 후원금 전달식</p>
+                        <p class="list_date">2024.12.23.</p>
+                    </div>
+                </div>
+
+                <div class="list_box">
+                    <div class="img_box">
+                        <img src="https://mbcmall.imbc.com/store/__icsFiles/afieldfile/2019/04/05/001.jpg" alt="paris">
+                    </div>
+                    <div class="list_text">
+                        <p class="list_title">구세군, 파리바게뜨, 전국 파리바게뜨 매장에 미니 자선냄비 설치</p>
+                        <p class="list_date">2024.12.11.</p>
+                    </div>
+                </div>
+
+                <div class="list_box">
+                    <div class="img_box">
+                        <img src="https://www.kocis.go.kr/CONTENTS/editImage/1701151494667.jpg" alt="children">
+                    </div>
+                    <div class="list_text">
+                        <p class="list_title">어린이 나눔교육 실시</p>
+                        <p class="list_date">2024.12.1.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+    <main>
+        <!-- 구세군 소개 섹션 -->
+        <section class="page_intro">
+                <!-- 섹션 타이틀 -->
+                <h1 class="title" style="padding-top: 70px;">introduce</h1>
+                <p class="comment">구세군은 소외된 이웃들과 함께 100년 넘도록 한결 같은 사랑의 행보를 이어오고 있습니다.</p>
+
+                <div class="intro_contents sec">
+                    <div class="intro_img sagoo">
+                        <img src="Img/intro/사구사당구.png" alt="사구사당구">
+                    </div>
+                    <div class="intro_text">
+                        <h1>사구사당구</h1>
+                        <p>후원계좌 : 농협 301-0281-2198-01</p>
+                        <p>후원전화 : 060-700-9390(3,000원)</p>
+                    </div>
+                </div>
+        </section>
+
+        <div class="no_back no2"></div>
+        <div class="no_back no1"></div>
+        <div class="no_back no3"></div>
+        <div class="no_back no4"></div>
+    </main>
+
+    <main>
+        <!-- 구세군 소개 섹션 -->
+        <section class="page_intro">
+
+                <div class="intro_contents">
+                    <div class="intro_img sagoo re_img">
+                        <img src="Img/intro/임금 끝자리 모금액 전달식.jpg" alt="임금">
+                    </div>
+                    <div class="intro_text re_txt">
+                        <h1 class="hello">임금 끝자리 모금액 전달식</h1>
+                        <p>
+                            한국중소벤처기업유통원은 나눔 가치 확산과 겨울철 소외계층 지원을 위해<br>
+                            1년간 모은 임직원 임금 끝자리를 모아 총 230만 원을 구세군에 전달
+                        </p>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <main>
+        <!-- 구세군 소개 섹션 -->
+        <section class="page_intro">
+
+            <div class="intro_contents">
+                <div class="intro_img sagoo">
+                    <img src="Img/intro/파리바게트 성금 전달식.jpg" alt="성금">
+                </div>
+                <div class="intro_text">
+                    <h1>파리바게트 성금 전달식</h1>
+                    <p>
+                        파리바게뜨와 함께하는 미니 자선냄비를 통해 모인 금액은<br>
+                        식수 부족 및 낙후된 환경으로 인해 어려움을 겪고 있는 캄보디아 어린이들의 내일을 바꾸기 위해 사용
+                    </p>
+                </div>
+            </div>
+
+            <div class="no_back no2"></div>
+            <div class="no_back no1"></div>
+            <div class="no_back no3"></div>
+            <div class="no_back no4"></div>
+        </section>
+    </main>
+
+    <main>
+        <!-- 구세군 소개 섹션 -->
+        <section class="page_intro">
+
+                <div class="intro_contents">
+                    <div class="intro_img sagoo re_img">
+                        <img src="Img/intro/휘슬러 전달식.jpg" alt="휘슬러">
+                    </div>
+                    <div class="intro_text re_txt">
+                        <h1 class="hello">휘슬러 전달식</h1>
+                        <p>
+                            휘슬러는 2004년부터 현재까지 매년 다양한 방법으로 구세군을 후원하고 있으며,<br>
+                            올해는 12월 동안 판매되는 냄비류 판매액의 1%를 구세군에 기부
+                        </p>
+                    </div>
+                </div>
+        </section>
+    </main>
+    
     <!-- 푸터 섹션 -->
-    <footer></footer>
+    <footer>
+        <div class="logo">
+            <a href="index.html" style="display: flex;">
+                <h1>구세군</h1>
+            </a>
+        </div>
+
+        <ul>
+            <li>
+                <a href="#">구세군 소개</a>
+                <ul>
+                    <li><a href="#">구세군의 역사</a></li>
+                    <li><a href="#">구세군이 하는 일</a></li>
+                    <li><a href="#">한국 구세군</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">후원하기</a>
+                <ul>
+                    <li><a href="#">정기 후원</a></li>
+                    <li><a href="#">자원 봉사</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">구세군 스토리</a>
+                <ul>
+                    <li><a href="#">사진 갤러리</a></li>
+                    <li><a href="#">홍보 영상</a></li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <p class="copy">
+            Copyright &copy;구세군(주) All Rights Reserved.
+        </p>
+
+        <div class="site">
+            <span>개인정보처리방침</span>
+            <span>이메일 무단 수집 거부</span>
+        </div>
+
+        <div class="social">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-x-twitter"></i>
+            <i class="fa-brands fa-youtube"></i>
+        </div>
+    </footer>
+    
 
 </body>
 </html>

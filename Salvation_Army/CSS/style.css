@@ -3,6 +3,14 @@
     padding: 0;
     box-sizing: border-box;
     color: rgb(30, 30, 30);
+    font-family: 'TheJamsil5Bold';
+}
+
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
 }
 
 li {
@@ -17,103 +25,57 @@ a {
 
 html {
     scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+:root {
+    --menu_font_size: 18px;
+    --hover_transition: 0.3s ease;
+}
+
+header, footer, main {
+    scroll-snap-align: start;
 }
 
 /* 헤더 섹션 */
 header {
     position: relative;
     width: 100%;
-    height: 50px;
+    height: 70px;
     /* background-color: white; */
-    padding: 0 40px;
     display: flex;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.main_menu a:hover,
-.user a:hover {
-    color: #da0f2c;
+    padding: 0 40px;
+    z-index: 1;
+    transition: var(--hover_transition);
 }
 
 .logo {
     display: flex;
 }
 
-.logo h2 {
+.logo h1 {
+    cursor: pointer;
     color: #eee;
 }
 
-/* nav */
-.main_menu {
+.menu {
     display: flex;
     margin: 0 30px;
 }
 
-.main_menu > li {
+.menu > li {
     position: relative;
-    margin: 0 30px;
-    height: 50px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
+    padding: 0 30px;
+    height: 70px;
+    line-height: 70px;
 }
 
-.main_menu > li > a {
-    font-size: 16px;
+.menu > li > a {
+    font-size: var(--menu_font_size);
     cursor: pointer;
+    transition: var(--hover_transition);
     color: #eee;
-}
-
-.sub_menu {
-    position: absolute;
-    top: 50px;
-    left: 0;
-    width: 100%;
-    height: 460px;
-    background-color: white;
-    overflow: hidden;
-    transition: 0.4s ease-in-out;
-    visibility: hidden;
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    padding: 40px;
-}
-
-.sub_menu h1 {
-    width: 40%;
-    height: 100%;
-    border-right: 1px solid rgb(195, 195, 195);
-    font-size: 50px;
-}
-
-.sub_menu ul {
-    width: 40%;
-    height: 100%;
-}
-
-.sub_menu li {
-    display: block;
-    margin: 15px 0;
-    padding-left: 40px;
-}
-
-.sub_menu a {
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.intro:hover ~ .one,
-.one:hover,
-.give:hover ~ .two,
-.two:hover,
-.story:hover ~ .three,
-.three:hover
-{
-    visibility: visible;
-    opacity: 1;
-    transition-delay: 0.2s;
 }
 
 .user {
@@ -125,27 +87,564 @@ header {
 }
 
 .user a {
-    margin-left: 30px;
-    font-size: 16px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: var(--hover_transition);
     color: #eee;
+    padding: 8px 25px;
+    border: 1px solid #eee;
+    border-radius: 25px;
+}
+
+.user a:nth-last-of-type(1) {
+    border-color: #da0f2c;
+    background-color: #da0f2c;
+}
+
+.submenu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 460px;
+    /* background-color: #f6f3f2; */
+    background-color: white;
+    z-index: -1;
+    border-top: 1px solid rgb(195, 195, 195);
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    overflow: hidden;
+    transition: var(--hover_transition);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.submenu h1 {
+    width: 40%;
+    font-size: 45px;
+    border-right: 1px solid rgb(195, 195, 195);
+}
+
+.submenu ul {
+    width: 40%;
+}
+
+.submenu li {
+    display: block;
+    margin-bottom: 25px;
+    padding-left: 40px;
+}
+
+.submenu a {
+    font-size: var(--menu_font_size);
+    transition: var(--hover_transition);
+    cursor: pointer;
+}
+
+header:hover {
+    background-color: white;
+}
+
+header:hover .user a:nth-of-type(1) {
+    border-color: rgb(30, 30, 30);
+}
+header:hover .user a:nth-of-type(2) {
+    color: #eee;
+}
+
+header:hover a,
+header:hover h1 {
+    color: rgb(30, 30, 30);
+}
+
+header a:hover {
+    color: #da0f2c;
+}
+
+.intro:hover ~ .one,
+.one:hover,
+.give:hover ~ .two,
+.two:hover,
+.story:hover ~ .three,
+.three:hover
+{
+    visibility: visible;
+    opacity: 1;
 }
 
 /* 비주얼 섹션 */
 .visual {
     position: fixed;
-    /* top: 80px; */
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: gray;
-    z-index: -2;
     overflow: hidden;
+    z-index: -1;
+}
+
+.slide {
+    width: 400vw;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.slide > div {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    animation: slide infinite ease-in-out 12s;
+}
+
+@keyframes slide {
+    0%, 20% {
+        transform: translateX(0);
+    }
+    32%, 52% {
+        transform: translateX(-100vw);
+    }
+    64%, 84% {
+        transform: translateX(-200vw);
+    }
+    96%, 100% {
+        transform: translateX(-300vw);
+    }
+}
+
+.slide > div::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .visual img {
     width: 100vw;
+}
+
+.visual_text {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    width: 900px;
+    height: 120px;
+}
+
+.visual_text > div {
+    position: absolute;
+}
+
+.visual_text h3 {
+    color: #eee;
+    margin-bottom: 30px;
+    font-size: 20px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.visual_text h1 {
+    color: #eee;
+    font-size: 60px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.foreign {animation: foreign infinite ease-in-out 12s;}
+.smoke {animation: smoke infinite ease-in-out 12s;}
+.covid {animation: covid infinite ease-in-out 12s;}
+
+@keyframes foreign {
+    0%, 20%, 96%, 100% {
+        visibility: visible;
+        opacity: 1;
+
+    }
+    32%, 52%, 64%, 84% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+@keyframes smoke {
+    0%, 20%, 96%, 100%, 64%, 84% {
+        visibility: hidden;
+        opacity: 0;
+
+    }
+    32%, 52% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes covid {
+    0%, 20%, 96%, 100%, 32%, 52% {
+        visibility: hidden;
+        opacity: 0;
+
+    }
+    64%, 84% {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+
+
+/* 메인 섹션 */
+.first {
+    margin-top: calc(100vh - 70px);
+}
+
+main {
+    position: relative;
+    width: 100%;
+    background-color: white;
+    overflow: hidden;
+    padding: 0 40px;
+}
+
+/* 공지사항 섹션 */
+.notice {
+    /* margin: 150px 0; */
+    height: 100vh;
+    padding-top: 80px;
+}
+
+/* 섹션 타이틀 */
+.title {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 45px;
+    margin-bottom: 30px;
+}
+
+.comment {
+    text-align: center;
+    font-size: var(--menu_font_size);
+    /* color: rgb(80, 80, 80); */
+}
+
+.notice_contents {
+    margin-top: 80px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.list_box {
+    width: 420px;
+    overflow: hidden;
+    border: none;
+    margin: 0 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.img_box {
+    width: 100%;
+    height: 420px;
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f6f3f2;
+}
+
+.img_box img {
+    transition: var(--hover_transition);
+}
+
+.img_box img[alt="kbank"] {
+    height: 100%;
+}
+
+.list_title {
+    padding-left: 10px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.list_date {
+    padding-left: 10px;
+    margin-top: 15px;
+    font-size: 16px;
+    color: rgb(100, 100, 100);
+}
+.list_box:hover .img_box img {
+    transform: scale(1.1);
+}
+
+.no_back {
+    position: absolute;
+    width: 1200px;
+    height: 200px;
+    border: none;
+    border-radius: 200px;
+    overflow: hidden;
+    transform: rotate(-45deg);
+}
+
+.no1 {
+    background-color: #da0f2dd0;
+    top: -5%;
+    right: -54%;
+    animation: back1 infinite ease-in-out 3.7s;
+}
+
+.no2 {
+    background-color: #da0f2d8d;
+    top: 35%;
+    right: -40%;
+    animation: back1 infinite ease-in-out 4s;
+}
+
+@keyframes back1 {
+    from, to {
+        transform: translateX(0) rotate(-45deg);
+    }
+
+    50% {transform: translateX(30px) rotate(-45deg);}
+}
+
+@keyframes back2 {
+    from, to {
+        transform: translateX(0) rotate(-45deg);
+    }
+
+    50% {transform: translateX(-30px) rotate(-45deg);}
+}
+
+.no3 {
+    bottom: -5%;
+    left: -54%;
+    background-color: #da0f2dd0;
+    animation: back2 infinite ease-in-out 3.7s;
+}
+
+.no4 {
+    bottom: 35%;
+    left: -40%;
+    background-color: #da0f2d8d;
+    animation: back2 infinite ease-in-out 4s;
+}
+
+/* 구세군 소개 섹션 */
+.page_intro {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+}
+
+.intro_contents {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 1;
+}
+
+.sec {
+    margin-top: 30px;
+}
+
+.intro_img {
+    position: relative;
+    width: 740px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.intro_img img {
+    width: 100%;
+}
+.intro_img img[alt="임금"] {
+    width: 110%;
+}
+.intro_img img[alt="성금"] {
+    width: 110%;
+}
+.intro_img img[alt="휘슬러"] {
+    width: 110%;
+}
+
+.sagoo {height: 500px;}
+
+.intro_text {
+    transition: var(--hover_transition);
+    visibility: hidden;
+    overflow: hidden;
+    /* display: none; */
+    opacity: 0;
+    padding-top: 40px;
+}
+
+.intro_img:hover ~ .intro_text {
+    visibility: visible;
+    opacity: 1;
+    padding-top: 0;
+}
+
+.intro_text h1 {
+    font-size: 60px;
+    margin-bottom: 60px;
+}
+
+.intro_text p {
+    margin-top: 5px;
+    font-size: var(--menu_font_size);
+    line-height: 25px;
+}
+
+.hello {
+    position: relative;
+}
+
+.re_img {
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+
+.re_txt {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    transform: translateY(-50%);
+}
+
+/* .hello::before {
+    position: absolute;
+    content: "";
+    bottom: -15px;
+    left: 5px;
+    width: 150px;
+    height: 5px;
+    background-color: #da0f2c;
+    overflow: hidden;
+    border: none;
+    border-radius: 25px;
+    animation: line infinite ease-in-out 2s;
+} */
+
+/* @keyframes line {
+    from, to {
+        width: 150px;
+    }
+
+    50% {width: 100px;}
+} */
+
+
+/* 푸터 섹션 */
+footer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: white;
+    border-top: 1px solid rgb(195, 195, 195);
+    padding: 0 40px;
+    display: flex;
+}
+
+footer > .logo {
+    margin-top: 20px;
+}
+
+footer > .logo h1 {
+    color: rgb(30, 30, 30);
+    font-size: 35px;
+}
+
+footer > ul {
+    margin: 20px 60px;
+    display: flex;
+}
+
+footer > ul > li {
+    margin: 0 40px;
+}
+
+footer > ul > li > ul {
+    margin-top: 15px;
+}
+
+footer > ul > li li {
+    color: rgb(100, 100, 100);
+    margin: 5px 0;
+}
+
+footer a {
+    transition: var(--hover_transition);
+    font-size: 16px;
+}
+footer a:hover {
+    color: #da0f2c;
+}
+
+.copy {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 16px;
+    color: rgb(100, 100, 100);
+}
+
+.site {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    display: flex;
+}
+
+.site span {
+    position: relative;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.site span:nth-of-type(1)::before {
+    position: absolute;
+    content: "";
+    top: 2px;
+    right: -17px;
+    width: 1.5px;
+    height: 13px;
+    background-color: rgb(100, 100, 100);
+}
+
+.social {
+    position: absolute;
+    bottom: 50px;
+    right: 40px;
+    display: flex;
+}
+
+.social i {
+    font-size: 25px;
+    margin-left: 15px;
+    color: rgb(100, 100, 100);
 }
