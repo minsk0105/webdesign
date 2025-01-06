@@ -28,6 +28,10 @@ html {
     scroll-snap-type: y mandatory;
 }
 
+html::-webkit-scrollbar {
+    display: none;
+}
+
 :root {
     --menu_font_size: 18px;
     --hover_transition: 0.3s ease;
@@ -341,12 +345,112 @@ main {
 }
 
 .list_box {
+    position: relative;
     width: 420px;
     overflow: hidden;
     border: none;
     margin: 0 10px;
     cursor: pointer;
     z-index: 1;
+}
+
+.label {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 2;
+    transition: var(--hover_transition);
+}
+
+.modal_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 740px;
+    height: 500px;
+    background-color: white;
+    overflow: hidden;
+    border: none;
+    border-radius: 20px;
+    padding: 0 40px;
+    margin-top: -40px;
+    transition: var(--hover_transition);
+}
+
+.modal_box h2 {
+    text-align: center;
+    font-size: 40px;
+    margin: 25px 0;
+    padding-bottom: 25px;
+    border-bottom: 2px solid rgb(100, 100, 100);
+}
+
+.modal_box h1 {
+    font-size: 30px;
+}
+
+.a {
+    margin-top: 10px;
+    color: rgb(100, 100, 100);
+    font-size: 20px;
+}
+
+.b {
+    margin-top: 30px;
+    line-height: 25px;
+}
+
+.modal_box span {
+    display: block;
+    margin-top: 40px;
+}
+
+.close {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--menu_font_size);
+    padding: 6px 30px;
+    border: 1px solid rgb(30, 30, 30);
+    border-radius: 25px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--hover_transition);
+}
+
+.close:hover {
+    border-color: #da0f2c;
+    background-color: #da0f2c;
+    color: #eee;
+}
+
+#show:checked ~ .modal {
+    visibility: visible;
+    opacity: 1;
+    z-index: 2;
+}
+#show:checked ~ .modal .modal_box {
+    margin-top: 0;
 }
 
 .img_box {
@@ -531,7 +635,7 @@ main {
 .re_txt {
     position: absolute;
     top: 50%;
-    left: 60px;
+    left: 160px;
     transform: translateY(-50%);
 }
 
@@ -647,4 +751,5 @@ footer a:hover {
     font-size: 25px;
     margin-left: 15px;
     color: rgb(100, 100, 100);
+    cursor: pointer;
 }
