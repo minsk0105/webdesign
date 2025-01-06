@@ -58,9 +58,19 @@ header {
     display: flex;
 }
 
+.logo a {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+}
+
 .logo h1 {
     cursor: pointer;
     color: #eee;
+    margin-left: 15px;
 }
 
 .menu {
@@ -676,6 +686,10 @@ footer {
 
 footer > .logo {
     margin-top: 20px;
+}
+
+footer .logo a {
+    height: 50px;
 }
 
 footer > .logo h1 {
