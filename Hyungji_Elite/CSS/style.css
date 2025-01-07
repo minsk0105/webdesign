@@ -1,0 +1,166 @@
+/* Common */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard-Regular';
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li::marker {
+    content: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 헤더 섹션 */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    z-index: 1;
+    background-color: white;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 로고 */
+.logo,
+.logo a {
+    width: 165px;
+    display: flex;
+}
+
+.logo img {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* 네비게이션 */
+
+/* 헤더 옵션 메뉴 */
+.header_option {
+    display: flex;
+    align-items: center;
+}
+
+.lang_btn {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #EA5514;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.lang_btn span {
+    color: #eee;
+    font-size: 14px;
+}
+
+.lang_list {
+    position: absolute;
+    top: 65px;
+    width: 100px;
+    padding: 0 20px;
+    background-color: #EA5514;
+    overflow: hidden;
+    border-radius: 10px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.lang_list li {
+    display: block;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.lang_list a {
+    font-size: 14px;
+    color: #eeeeeeb0;
+    transition: .2s ease-out;
+}
+
+.lang_list a:hover {
+    color: white;
+}
+
+.share, .menu_bar {
+    position: relative;
+    display: flex;
+    margin-left: 30px;
+}
+
+.share_menu {
+    position: absolute;
+    top: 65px;
+    right: 96.25px;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.share_menu a {
+    display: block;
+    width: 42px;
+    height: 42px;
+    background-color: #EA5514;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.share_menu a > svg {
+    font-size: 16px;
+    fill: #eee;
+}
+
+.header_option svg {
+    font-size: 30px;
+    cursor: pointer;
+    transition: .2s ease-out;
+}
+
+.header_option svg:hover {
+    fill: #EA5514;
+}
+
+/* 토글 이벤트 */
+.show_lang {
+    visibility: visible;
+    opacity: 1;
+    margin-top: 10px;
+    transition: .2s ease-in-out;
+}
