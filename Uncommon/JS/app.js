@@ -20,6 +20,9 @@ const moreBox = document.querySelector('.more_box');
 
 let currentScrollTop = window.scrollY;
 
+const Add = () => {moreBox.classList.add("hide_more");}
+const Remove = () => {moreBox.classList.remove("hide_more");}
+
 const scrFixed = (item) => {
     if (currentScrollTop < item) {
         header.classList.add("hide_header");
@@ -29,11 +32,7 @@ const scrFixed = (item) => {
 
     currentScrollTop = item;
 
-    if (item >= 1000) {
-        moreBox.classList.add("hide_more");
-    } else {
-        moreBox.classList.remove("hide_more");
-    }
+    if (item >= 1000 ? Add() : Remove());
 };
 
 // 메인 섹션 스크롤 애니메이션 효과
