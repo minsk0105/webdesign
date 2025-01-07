@@ -1,3 +1,8 @@
+// const 상수 == 불변 / 변경 불가
+// let 상수비스무리 == 값 변경은 가능, 타입은 변경 불가()
+// var 쌉가능 == 값 / 타입 모두 변경 가능
+
+
 // 스크롤 이벤트
 window.addEventListener('scroll', function(event) {
     const target = this.window.scrollY;
@@ -15,7 +20,7 @@ const moreBox = document.querySelector('.more_box');
 
 let currentScrollTop = window.scrollY;
 
-function scrFixed(item) {
+const scrFixed = (item) => {
     if (currentScrollTop < item) {
         header.classList.add("hide_header");
     } else {
@@ -36,7 +41,7 @@ const mViBox = document.querySelector('.scr_ani_box');
 const playLine = document.querySelector('.play_line');
 const showreel = document.querySelector('.showreel');
 
-function scrMain(item) {
+const scrMain = (item) => {
     if (item > 150) {
         if (item >= 150 && item <= 1000) {
             // mViBox.style.transform = 'translate(-50%, 600px) scale(3)';
@@ -79,7 +84,7 @@ function scrMain(item) {
 // 메인 섹션 리스트 박스
 const boxes = document.querySelectorAll('.list_box');
 
-function listBox(item) {
+const listBox = (item) => {
     if (item > 150) {
         boxes.forEach(function(box) {
             if (item >= 150 && item <= 1580) {
@@ -142,7 +147,7 @@ const moveCursor = document.querySelector('.move_cursor');
 const board = document.querySelector('.board');
 
 // 초기 위치값
-function resetPosition() {
+const resetPosition = () => {
     const centerX = 150 - moveCursor.offsetWidth / 2;
     const centerY = 90 - moveCursor.offsetHeight / 2;
     moveCursor.style.transform = `translate(${centerX}px, ${centerY}px)`;
