@@ -368,6 +368,16 @@ header:hover .menu > li > a {
     overflow: hidden;
 }
 
+.visual::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 .first_slide, .second_slide {
     position: absolute;
     width: 100%;
@@ -382,6 +392,26 @@ header:hover .menu > li > a {
     width: 100%;
 }
 
+.slide_text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.slide_text p {
+    color: #eee;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.slide_text h1 {
+    color: #eee;
+    font-size: 80px;
+    margin-top: 10px;
+}
+
 /* 스크롤 다운 */
 .scr_down {
     position: absolute;
@@ -390,6 +420,7 @@ header:hover .menu > li > a {
     display: flex;
     align-items: center;
     transform: rotate(90deg) translateX(50%);
+    z-index: 1;
 }
 
 .scr_down span {
