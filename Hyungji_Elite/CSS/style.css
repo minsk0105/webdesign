@@ -47,7 +47,7 @@ header {
     left: 0;
     width: 100%;
     height: 90px;
-    z-index: 1;
+    z-index: 2;
     background-color: white;
     padding: var(--page_padding);
     display: flex;
@@ -259,7 +259,7 @@ header:hover .menu > li > a {
     width: 100vw;
     height: 100vh;
     background-color: var(--orange);
-    z-index: 1;
+    z-index: 2;
     overflow: hidden;
     visibility: hidden;
     opacity: 0;
@@ -375,7 +375,7 @@ header:hover .menu > li > a {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .first_slide, .second_slide {
@@ -385,7 +385,8 @@ header:hover .menu > li > a {
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
+    transition: 1s ease-out;
 }
 
 .visual img {
@@ -401,15 +402,61 @@ header:hover .menu > li > a {
 }
 
 .slide_text p {
+    display: flex;
+    overflow: hidden;
+}
+
+.slide_text span {
     color: #eee;
-    font-size: 32px;
     font-weight: bold;
 }
 
-.slide_text h1 {
-    color: #eee;
+.sub_title {
+    font-size: 32px;
+}
+
+.main_title {
+    display: block;
+    margin-top: 20px;
     font-size: 80px;
-    margin-top: 10px;
+}
+
+.slide_text a {
+    display: inline-block;
+    width: 150px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--orange);
+    padding: 14px 25px;
+    border-radius: 25px;
+    color: #eee;
+    font-size: var(--small);
+    font-weight: 500;
+    margin-top: 30px;
+    transition: .2s ease-out;
+}
+
+.slide_text a:hover {
+    background-color: black;
+}
+
+.slide_text svg {
+    fill: #eee;
+}
+
+/* 이벤트리스너 */
+.hide_slide {
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+}
+
+.zoom {
+    transition: 2s ease-out;
+    transform: scale(1.3);
 }
 
 /* 스크롤 다운 */
@@ -467,4 +514,58 @@ header:hover .menu > li > a {
     90% {
         margin-left: 20px;
     }
+}
+
+/* 슬라이드 버튼 */
+.sld_btn_menu {
+    position: absolute;
+    top: 40%;
+    left: 55px;
+    z-index: 1;
+    display: block;
+}
+
+.current_page {
+    color: #eee;
+    font-size: var(--small);
+    font-weight: bold;
+    text-align: center;
+}
+
+.gauge {
+    margin-top: 15px;
+    width: 20px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.g_bar {
+    position: relative;
+    width: 2px;
+    height: 100%;
+    background-color: #eeeeee80;
+}
+
+.pause_btn {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.pause_btn svg {
+    fill: #eee;
+    width: 10px;
+}
+
+.prev_btn, .next_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.prev_btn svg, .next_btn svg {
+    fill: #eeeeee80;
 }
