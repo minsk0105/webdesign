@@ -45,6 +45,18 @@ const slide = () => {
         pageImg.classList.add("zoom");
     }, 200);
 
+    pageTextContent.forEach((text) => {
+        const innerTxt = text.children[0];
+        
+        innerTxt.style.transform = 'translateY(100%)';
+        innerTxt.style.transition = 'none';
+
+        setTimeout(() => {
+            innerTxt.style.transform = 'translateY(0)';
+            innerTxt.style.transition = '.8s ease-out';
+        }, 1000);
+    });
+
     for (let i = 0; i < pages.length; i++) {
         const item = pages[i];
 
@@ -84,57 +96,3 @@ sldBtns.forEach((btn) => {
 
     });
 });
-
-// const slide = (pages, show, num) => {
-
-//     const target = pages[currentPage];
-//     const pageImg = target.children[0];
-//     const timeOut = num * 1000;
-
-//     setTimeout(() => {
-//         pageImg.classList.add("zoom");
-//         setTimeout(() => {
-//             pageImg.classList.remove("zoom");
-//         }, (timeOut + 1000));
-//     }, 100);
-
-//     pageTextContent.forEach((item) => {
-//         const inner = item.children[0];
-//         inner.style.transform = `translateY(${item.offsetHeight}px)`;
-//         inner.style.transition = 'none';
-
-//         setTimeout(() => {
-//             inner.style.transform = `translateY(0)`;
-//             inner.style.transition = '.6s ease-out';
-//         }, 800);
-//     });
-    
-//     setTimeout(() => {
-//         if (target) {
-//             target.classList.add(show);
-//         }
-        
-//         pages.forEach((item) => {
-//             if (target !== item) {
-//                 item.classList.remove(show);
-//             }
-//         });
-
-//         const currentIndex = (currentPage === 0) ? currentPage++ : currentPage--;
-//         slide(pages, "hide_slide", 7);
-        
-//     }, timeOut);
-// };
-
-// window.addEventListener('DOMContentLoaded', slide(pages, "hide_slide", 6));
-
-// // 슬라이드 버튼
-// const sldBtns = document.querySelectorAll('.sld_btn');
-
-// sldBtns.forEach((btn) => {
-//     btn.addEventListener('click', () => {
-//         if (!btn.classList.contains("pause_btn")) {
-//             stoped = true;
-//         }
-//     });
-// });
